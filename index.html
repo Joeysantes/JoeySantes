@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Joe Santes — Operations, Sales & Brand Leadership</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0d0d0d;
+      --dark: #161616;
+      --panel: #1e1e1e;
+      --white: #f5f5f3;
+      --mid: #888884;
+      --line: #2e2e2e;
+      --accent: #e8f000; /* electric yellow — the signature pop */
+      --display: 'Barlow Condensed', sans-serif;
+      --body: 'Barlow', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--body);
+      background: var(--black);
+      color: var(--white);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: rgba(13,13,13,0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      transition: padding 0.3s;
+    }
+
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--body);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 4rem 5rem;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      top: 50%;
+      right: -2rem;
+      transform: translateY(-50%);
+      font-family: var(--display);
+      font-size: clamp(14rem, 22vw, 24rem);
+      font-weight: 700;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.04);
+      line-height: 1;
+      pointer-events: none;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--body);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    .hero-title {
+      font-family: var(--display);
+      font-size: clamp(4rem, 9vw, 10rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.35s;
+    }
+
+    .hero-title .accent { color: var(--accent); }
+
+    .hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.55s;
+    }
+
+    .hero-desc {
+      max-width: 440px;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.75;
+    }
+
+    .hero-desc strong { color: var(--white); font-weight: 500; }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      flex-shrink: 0;
+    }
+
+    .hero-stat-num {
+      font-family: var(--display);
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-stat-num span { color: var(--accent); }
+
+    .hero-stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-top: 0.4rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.7s;
+    }
+
+    .btn-primary {
+      padding: 0.9rem 2.2rem;
+      background: var(--accent);
+      color: var(--black);
+      font-family: var(--body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    .btn-secondary {
+      padding: 0.9rem 2.2rem;
+      border: 1px solid var(--line);
+      color: var(--mid);
+      font-family: var(--body);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { border-color: var(--white); color: var(--white); }
+
+    /* ── SECTIONS ── */
+    section { padding: 7rem 4rem; }
+
+    .section-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-family: var(--body);
+    }
+
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 3.5rem;
+    }
+
+    .section-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--line);
+      margin-bottom: 5rem;
+    }
+
+    /* ── VALUE PROP STRIP ── */
+    #value {
+      background: var(--accent);
+      padding: 2rem 4rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      overflow: hidden;
+    }
+
+    .value-label {
+      font-family: var(--display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--black);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .value-items {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .value-item {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--black);
+      opacity: 0.75;
+      white-space: nowrap;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--dark); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .about-left { position: sticky; top: 120px; }
+
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: var(--panel);
+    }
+
+    .about-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(20%);
+    }
+
+    .about-caption {
+      margin-top: 1.25rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .about-body p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(245,245,243,0.75);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-body p strong { color: var(--white); font-weight: 500; }
+
+    .about-highlight {
+      border-left: 2px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 2.5rem 0;
+      background: rgba(232,240,0,0.04);
+    }
+
+    .about-highlight p {
+      font-family: var(--display);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--white) !important;
+      line-height: 1.35;
+      margin: 0 !important;
+    }
+
+    .about-highlight p em { color: var(--accent); font-style: normal; }
+
+    .competency-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 2rem;
+      margin-top: 2rem;
+    }
+
+    .competency-item {
+      font-size: 0.82rem;
+      color: var(--mid);
+      font-weight: 400;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .competency-item::before {
+      content: '';
+      width: 4px; height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── BRAND EXPERIENCE ── */
+    #brands { background: var(--black); }
+
+    .brands-intro {
+      max-width: 600px;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 4rem;
+    }
+
+    .brands-intro strong { color: var(--white); font-weight: 500; }
+
+    .brand-tiles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      margin-bottom: 5rem;
+    }
+
+    .brand-tile {
+      background: var(--dark);
+      padding: 2.5rem 2rem;
+      transition: background 0.2s;
+    }
+
+    .brand-tile:hover { background: var(--panel); }
+
+    .brand-tile-name {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .brand-tile-type {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 1rem;
+    }
+
+    .brand-tile-detail {
+      font-size: 0.82rem;
+      color: rgba(245,245,243,0.5);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ── RUNNING / ATHLETE SECTION ── */
+    #athlete {
+      background: var(--accent);
+      padding: 6rem 4rem;
+    }
+
+    .athlete-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .athlete-title {
+      font-family: var(--display);
+      font-size: clamp(3rem, 6vw, 6rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 2rem;
+    }
+
+    .athlete-body p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(13,13,13,0.7);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .athlete-body p strong { color: var(--black); }
+
+    .athlete-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .athlete-stat {
+      border-top: 1px solid rgba(13,13,13,0.2);
+      padding-top: 1.5rem;
+    }
+
+    .athlete-stat-num {
+      font-family: var(--display);
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .athlete-stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(13,13,13,0.6);
+      margin-top: 0.3rem;
+    }
+
+    /* ── EXPERIENCE TIMELINE ── */
+    #experience { background: var(--dark); }
+
+    .experience-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .exp-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      padding: 3rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .exp-row:last-child { border-bottom: 1px solid var(--line); }
+
+    .exp-dates {
+      font-family: var(--display);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      padding-top: 0.25rem;
+    }
+
+    .exp-company {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-top: 0.4rem;
+    }
+
+    .exp-role {
+      font-family: var(--display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      margin-bottom: 1rem;
+    }
+
+    .exp-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .exp-points li {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(245,245,243,0.65);
+      line-height: 1.65;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .exp-points li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .exp-points li strong { color: var(--white); font-weight: 500; }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--black); }
+
+    .projects-intro {
+      max-width: 580px;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 4rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--line);
+      margin-bottom: 5rem;
+    }
+
+    .project-card {
+      background: var(--dark);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .project-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.75) grayscale(15%);
+      transition: filter 0.4s ease, transform 0.5s ease;
+    }
+
+    .project-card:hover .project-img img {
+      filter: brightness(0.95) grayscale(0%);
+      transform: scale(1.05);
+    }
+
+    .project-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.25rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+    }
+
+    .project-overlay-title {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .project-overlay-scope {
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-top: 0.2rem;
+    }
+
+    .project-meta {
+      padding: 1rem 1.1rem;
+      border-top: 1px solid var(--line);
+      background: var(--dark);
+    }
+
+    .project-name {
+      font-family: var(--display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .project-detail {
+      font-size: 0.68rem;
+      color: var(--mid);
+      letter-spacing: 0.06em;
+      margin-top: 0.2rem;
+    }
+
+    /* ── TICKER ── */
+    .ticker-section {
+      border-top: 1px solid var(--line);
+      padding-top: 4rem;
+    }
+
+    .ticker-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .ticker-heading {
+      font-family: var(--display);
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 2.5rem;
+    }
+
+    .ticker-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .ticker-count {
+      font-size: 0.75rem;
+      color: var(--mid);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .ticker-stage {
+      width: 100%;
+      max-width: 700px;
+      height: 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ticker-item {
+      position: absolute;
+      width: 100%; left: 0; top: 0; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      opacity: 0;
+      transform: translateY(36px);
+      transition: none;
+      pointer-events: none;
+    }
+
+    .ticker-item.active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .ticker-item.exit {
+      opacity: 0;
+      transform: translateY(-36px);
+      transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.55, 0, 0.78, 0);
+    }
+
+    .ticker-project-name {
+      font-family: var(--display);
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-weight: 600;
+      color: var(--white);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .ticker-project-index {
+      font-size: 0.68rem;
+      color: var(--mid);
+      letter-spacing: 0.12em;
+    }
+
+    .ticker-progress-wrap {
+      width: 100%;
+      max-width: 700px;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .ticker-progress-fill {
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+    }
+
+    .ticker-controls {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .ticker-btn {
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--mid);
+      font-family: var(--body);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .ticker-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    .ticker-dots {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 700px;
+    }
+
+    .ticker-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--line);
+      transition: background 0.3s, transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    .ticker-dot.current { background: var(--accent); transform: scale(1.5); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--dark); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-left h3 {
+      font-family: var(--display);
+      font-size: 3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-left h3 span { color: var(--accent); }
+
+    .contact-left p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.8;
+      max-width: 380px;
+    }
+
+    .contact-info {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-info-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      min-width: 70px;
+    }
+
+    .contact-info-val {
+      font-size: 0.9rem;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .form-group label {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      font-family: var(--body);
+      font-size: 0.9rem;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.2); }
+
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+
+    .form-group textarea { min-height: 120px; }
+
+    .form-submit {
+      padding: 1rem 2.5rem;
+      background: var(--accent);
+      color: var(--black);
+      font-family: var(--body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+      align-self: flex-start;
+    }
+
+    .form-submit:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 4rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-name {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .footer-copy { font-size: 0.72rem; color: var(--mid); }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+
+    .footer-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .brand-tiles { grid-template-columns: repeat(2, 1fr); }
+      .athlete-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 1.1rem 1.5rem; }
+      .nav-links { gap: 1.25rem; }
+      #home { padding: 80px 1.5rem 4rem; }
+      .hero-bg-text { display: none; }
+      .hero-bottom { flex-direction: column; align-items: flex-start; }
+      section { padding: 5rem 1.5rem; }
+      #value { padding: 1.5rem; flex-direction: column; gap: 1rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-left { position: static; }
+      .about-photo { aspect-ratio: 16/9; }
+      .brand-tiles { grid-template-columns: 1fr 1fr; }
+      .exp-row { grid-template-columns: 1fr; gap: 0.75rem; }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+
+    @media (max-width: 540px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .brand-tiles { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#home" class="nav-logo">Joe <span>Santes</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#brands">Brand Experience</a></li>
+      <li><a href="#athlete">Running</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-bg-text">SANTES</div>
+    <p class="hero-eyebrow">Operations · Sales · Brand Leadership · Running Culture</p>
+    <h1 class="hero-title">
+      Joe<br>
+      <span class="accent">Santes.</span>
+    </h1>
+    <div class="hero-bottom">
+      <div>
+        <p class="hero-desc">
+          <strong>18 years delivering for national brands</strong> — from Tesla to REI, Target to LL Bean. I run operations, build teams, and close deals. I also run 50- and 100-mile ultras. I know what performance brands demand from the inside out.
+        </p>
+        <div class="hero-ctas">
+          <a href="#about" class="btn-primary">Learn More</a>
+          <a href="#contact" class="btn-secondary">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">18<span>+</span></div>
+          <div class="hero-stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">100<span>+</span></div>
+          <div class="hero-stat-label">Projects Delivered</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">20<span>+</span></div>
+          <div class="hero-stat-label">Brands Served</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE STRIP -->
+  <div id="value">
+    <div class="value-label">What I bring →</div>
+    <div class="value-items">
+      <div class="value-item">Operations Leadership</div>
+      <div class="value-item">Sales & Business Development</div>
+      <div class="value-item">National Brand Relationships</div>
+      <div class="value-item">Team Building</div>
+      <div class="value-item">Running Community Credibility</div>
+      <div class="value-item">Bilingual: English / Spanish</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-eyebrow reveal">Background</p>
+    <h2 class="section-title reveal">Built Different.</h2>
+    <div class="section-rule"></div>
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <div class="about-photo">
+          <img src="profile.jpeg" alt="Joe Santes" />
+        </div>
+        <div class="about-caption">Joe Santes · North Smithfield, RI</div>
+      </div>
+      <div class="about-body reveal">
+        <p>I'm Joe Santes — an operations executive and commercial project leader with <strong>18 years of experience managing national brand buildouts across New England.</strong> My clients have included Tesla, REI, Target, Marriott, H&M, ZARA, LL Bean, and Victoria's Secret. I've overseen <strong>$20M+ in annual project volume</strong> with full P&L accountability.</p>
+        <p>But what makes my background different is the combination. I've built and managed national brand portfolios from cold outreach through multi-year contract relationships. I've run sales, marketing, and SEO to generate inbound business without agency support. I've led teams of 20 field personnel across 40+ concurrent projects simultaneously. I don't just manage — I <strong>build systems, develop people, and close business.</strong></p>
+
+        <div class="about-highlight">
+          <p>"I've taken on projects other contractors declined, resolved mid-project disputes, and <em>consistently delivered</em> on commitments."</p>
+        </div>
+
+        <p>I'm fluent in Spanish — a genuine asset working with diverse crews and client bases. I hold OSHA 30, OSHA 10, EPA RRP Lead-Safe, and Procore certifications. I studied at Providence College.</p>
+        <p>I also lead a men's mentorship cohort year-round — because developing people is something I take seriously on and off the job site.</p>
+
+        <div class="competency-grid">
+          <div class="competency-item">Operations Strategy</div>
+          <div class="competency-item">Sales & Business Development</div>
+          <div class="competency-item">Team Leadership</div>
+          <div class="competency-item">Multi-Site Execution</div>
+          <div class="competency-item">National Account Management</div>
+          <div class="competency-item">Process Building & Scaling</div>
+          <div class="competency-item">Stakeholder Relations</div>
+          <div class="competency-item">Marketing & Inbound Strategy</div>
+          <div class="competency-item">Bilingual: English / Spanish</div>
+          <div class="competency-item">Procore · PlanSwift · STACK</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND EXPERIENCE -->
+  <section id="brands">
+    <p class="section-eyebrow reveal">Client Portfolio</p>
+    <h2 class="section-title reveal">National Brands.<br>Real Results.</h2>
+    <div class="section-rule"></div>
+    <p class="brands-intro reveal">Over the past decade I've managed complex, multi-site commercial projects for some of the most recognized brands in retail, hospitality, and tech. <strong>These aren't logos on a slide — these are relationships I built and jobs I delivered.</strong></p>
+
+    <div class="brand-tiles reveal">
+      <div class="brand-tile">
+        <div class="brand-tile-name">Tesla</div>
+        <div class="brand-tile-type">EV / Tech</div>
+        <div class="brand-tile-detail">Service center in Norwood, MA and showroom at Natick Mall. Coordinated around Tesla's strict brand finish standards and mall operating hours.</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile-name">REI</div>
+        <div class="brand-tile-type">Outdoor / Retail</div>
+        <div class="brand-tile-detail">Full commercial buildouts across New England. Repeat work driven by on-time delivery and finish quality.</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile-name">Target</div>
+        <div class="brand-tile-type">Mass Retail</div>
+        <div class="brand-tile-detail">Multi-site rollouts including Lincoln RI, Newington CT, and Seekonk MA. Managed tight retail opening schedules.</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile-name">LL Bean</div>
+        <div class="brand-tile-type">Outdoor / Apparel</div>
+        <div class="brand-tile-detail">Completed multiple locations across MA including Mashpee Commons. Long-standing brand relationship built on trust.</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile-name">Marriott</div>
+        <div class="brand-tile-type">Hospitality</div>
+        <div class="brand-tile-detail">Residence Inn and SpringHill Suites properties across the region. Delivered to hospitality-grade finish standards.</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile-name">H&M</div>
+        <div class="brand-tile-type">Global Fashion</div>
+        <div class="brand-tile-detail">Full interior painting at Providence Place Mall. Fast-turn retail environment requiring precise coordination.</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile-name">ZARA</div>
+        <div class="brand-tile-type">Global Fashion</div>
+        <div class="brand-tile-detail">Providence Place Mall buildout. High-end finish requirements with zero tolerance for rework on opening day.</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile-name">Victoria's Secret</div>
+        <div class="brand-tile-type">Retail</div>
+        <div class="brand-tile-detail">Multiple locations including Northshore Mall rebrand, Cape Cod Mall, and Mall of NH. Brand-standard finish across every site.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATHLETE SECTION -->
+  <section id="athlete">
+    <div class="athlete-grid">
+      <div class="athlete-body">
+        <p class="section-eyebrow" style="color:rgba(13,13,13,0.5);">Running Culture</p>
+        <h2 class="athlete-title">Ultra-<br>Marathon<br>Runner.</h2>
+        <p>I'm an active ultra-marathon competitor with <strong>multiple marathons</strong> under my belt, averaging <strong>four 50Ks a year</strong> — including the Vermont 50 Miler twice. This year I'm toeing the line at my <strong>first 100-miler.</strong> Running isn't a hobby I do on weekends. It's how I think, how I lead, and how I show up.</p>
+        <p>Every week I run with <strong>Remnant Run Club</strong> — a community I'm part of, not just adjacent to. I understand the running world from the inside: the gear, the culture, what drives loyalty, what breaks trust. <strong>I know what serious runners demand from the brands they choose to align with.</strong></p>
+        <p>That's not something you learn in a focus group. It's lived experience that brings real credibility to any brand operating in the performance running space.</p>
+      </div>
+      <div class="athlete-stats">
+        <div class="athlete-stat">
+          <div class="athlete-stat-num">100</div>
+          <div class="athlete-stat-label">Mile First — Coming This Year</div>
+        </div>
+        <div class="athlete-stat">
+          <div class="athlete-stat-num">2×</div>
+          <div class="athlete-stat-label">Vermont 50 Miler</div>
+        </div>
+        <div class="athlete-stat">
+          <div class="athlete-stat-num">4+</div>
+          <div class="athlete-stat-label">50Ks Per Year</div>
+        </div>
+        <div class="athlete-stat">
+          <div class="athlete-stat-num">RRC</div>
+          <div class="athlete-stat-label">Remnant Run Club — Weekly</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-eyebrow reveal">Career History</p>
+    <h2 class="section-title reveal">Experience.</h2>
+    <div class="section-rule"></div>
+
+    <div class="experience-rows">
+
+      <div class="exp-row reveal">
+        <div>
+          <div class="exp-dates">2020 — Present</div>
+          <div class="exp-company">AC Painting & Wallcovering</div>
+        </div>
+        <div>
+          <div class="exp-role">Project Executive</div>
+          <ul class="exp-points">
+            <li>Lead teams of up to <strong>20 field personnel</strong> plus subcontractor networks across <strong>40+ concurrent projects</strong> — setting direction, holding standards, building a culture of execution.</li>
+            <li>Manage multi-year relationships with <strong>Tesla, Target, REI, H&M, ZARA, Marriott, Hilton, LL Bean, and Victoria's Secret</strong> — consistently earning repeat business through trust and performance.</li>
+            <li>Oversee <strong>$20M+ in annual delivered project volume</strong> with full P&L accountability across pre-construction, scheduling, field execution, and closeout.</li>
+            <li>Built and scaled an operating model for <strong>multi-site national rollouts</strong> — defining process, team structure, and quality standards to execute at scale.</li>
+            <li>Took on projects other contractors declined, resolved mid-project disputes, and consistently delivered on commitments under pressure.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-row reveal">
+        <div>
+          <div class="exp-dates">2016 — 2020</div>
+          <div class="exp-company">AC Wallcovering & Decorating</div>
+        </div>
+        <div>
+          <div class="exp-role">Senior Project Manager</div>
+          <ul class="exp-points">
+            <li>Built the <strong>national brand account portfolio from the ground up</strong> — Tesla, Marriott, Target, H&M, ZARA, LL Bean, REI, Victoria's Secret — through relationship-driven business development.</li>
+            <li>Chased the Oasis at Plymouth project for <strong>nearly two years</strong> before landing it; ran 20 months and finished <strong>paid in full</strong> despite mid-job stakeholder conflict.</li>
+            <li>Took on a complex exterior project in downtown Boston that other subs turned down, navigated city access constraints, and delivered complete.</li>
+            <li>Influenced GC partners, brand stakeholders, and field crews — aligning diverse groups around shared timelines and quality outcomes <strong>without formal authority</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-row reveal">
+        <div>
+          <div class="exp-dates">2010 — 2016</div>
+          <div class="exp-company">AC Wallcovering & Decorating</div>
+        </div>
+        <div>
+          <div class="exp-role">Chief Estimator / Sales & Marketing</div>
+          <ul class="exp-points">
+            <li>Closed roughly <strong>40% of bids submitted</strong>, averaging <strong>$7M/year in negotiated contracts.</strong></li>
+            <li>Built custom estimating workflows using <strong>PlanSwift, STACK, Bluebeam, and Procore</strong> that cut turnaround time on bid packages significantly.</li>
+            <li>Ran website, branding, and <strong>SEO marketing in parallel</strong> — drove inbound lead flow without paid agency support.</li>
+            <li>Delivered a full wallcovering specialty buildout for a high-end retailer on Newbury Street, Boston — re-stripped sections to hit technical detail, finished at a level the client signed off for repeat work.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-row reveal">
+        <div>
+          <div class="exp-dates">2010 — 2014</div>
+          <div class="exp-company">Community</div>
+        </div>
+        <div>
+          <div class="exp-role">Head Soccer Coach</div>
+          <ul class="exp-points">
+            <li>Head Coach, <strong>Master Regional Academy Varsity</strong> (2010–2014) — built team culture, developed young athletes, drove competitive results.</li>
+            <li>Head Coach, <strong>Cranston High School</strong> (2006–2008).</li>
+            <li>Currently lead a <strong>men's mentorship cohort</strong> at Awakening Church — developing relational frameworks, facilitating growth conversations, investing in others' development.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-eyebrow reveal">Portfolio</p>
+    <h2 class="section-title reveal">Completed Projects.</h2>
+    <div class="section-rule"></div>
+    <p class="projects-intro reveal">A selection of commercial projects I've estimated, managed, and delivered — spanning retail, hospitality, education, industrial, and mixed-use. Every one of these was delivered on schedule and to spec.</p>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-img">
+          <img src="Tesla.jpeg" alt="Tesla Service Center" />
+          <div class="project-overlay">
+            <div class="project-overlay-title">Tesla Service Center</div>
+            <div class="project-overlay-scope">Interior & Exterior · Norwood, MA</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div class="project-name">Tesla Service Center</div>
+          <div class="project-detail">Tech/Commercial · Norwood, MA</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">
+          <img src="Pplace1.jpeg" alt="Providence Place Mall" style="object-position:center;" />
+          <div class="project-overlay">
+            <div class="project-overlay-title">Providence Place Mall</div>
+            <div class="project-overlay-scope">Full Interior Repaint · Providence, RI</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div class="project-name">Providence Place Mall</div>
+          <div class="project-detail">Retail · Providence, RI</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">
+          <img src="Thayer1.jpeg" alt="Thayer Academy" />
+          <div class="project-overlay">
+            <div class="project-overlay-title">Thayer Academy — Middle School</div>
+            <div class="project-overlay-scope">Full Interior & Exterior · Braintree, MA</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div class="project-name">Thayer Academy</div>
+          <div class="project-detail">Education · Braintree, MA</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">
+          <img src="Dana1.jpeg" alt="Dana Hall School" style="object-position:center top;" />
+          <div class="project-overlay">
+            <div class="project-overlay-title">Dana Hall School</div>
+            <div class="project-overlay-scope">Full Renovation · Wellesley, MA</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div class="project-name">Dana Hall School</div>
+          <div class="project-detail">Education · Wellesley, MA</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">
+          <img src="aerial-view-1-2.jpg" alt="Oasis at Plymouth" style="object-position:center;" />
+          <div class="project-overlay">
+            <div class="project-overlay-title">Oasis at Plymouth</div>
+            <div class="project-overlay-scope">6 Buildings · Clubhouse & Pool · Plymouth, MA</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div class="project-name">Oasis at Plymouth</div>
+          <div class="project-detail">Residential/Mixed-Use · Plymouth, MA</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">
+          <img src="Delaney.jpg" alt="Delaney at the Vale" style="object-position:center;" />
+          <div class="project-overlay">
+            <div class="project-overlay-title">Delaney at the Vale</div>
+            <div class="project-overlay-scope">Full Exterior Scope · Woburn, MA</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div class="project-name">Delaney at the Vale</div>
+          <div class="project-detail">Residential/Mixed-Use · Woburn, MA</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">
+          <img src="HM.jpg" alt="H&M" style="object-position:center top;" />
+          <div class="project-overlay">
+            <div class="project-overlay-title">H&M</div>
+            <div class="project-overlay-scope">Full Interior Painting · Providence Place Mall, RI</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div class="project-name">H&M — Providence Place</div>
+          <div class="project-detail">Retail · Providence, RI</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">
+          <img src="WestwoodCompany.jpg" alt="Boston College Archives" style="object-position:center;" />
+          <div class="project-overlay">
+            <div class="project-overlay-title">Boston College Archives</div>
+            <div class="project-overlay-scope">Interior Renovation · Chestnut Hill, MA</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div class="project-name">Boston College Archives</div>
+          <div class="project-detail">Education · Chestnut Hill, MA</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">
+          <img src="MiltonCAT.jpg" alt="Milton CAT" style="object-position:center;" />
+          <div class="project-overlay">
+            <div class="project-overlay-title">Milton CAT</div>
+            <div class="project-overlay-scope">Full Interior & Exterior · Stoughton, MA</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div class="project-name">Milton CAT</div>
+          <div class="project-detail">Industrial/Commercial · Stoughton, MA</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TICKER -->
+    <div class="ticker-section">
+      <p class="ticker-label">Full Portfolio</p>
+      <h3 class="ticker-heading">Every Project Delivered</h3>
+      <div class="ticker-wrap">
+        <span class="ticker-count" id="tickerCount"></span>
+        <div class="ticker-stage" id="tickerStage"></div>
+        <div class="ticker-progress-wrap">
+          <div class="ticker-progress-fill" id="tickerProgress"></div>
+        </div>
+        <div class="ticker-controls">
+          <button class="ticker-btn" id="tickerPrev">← Prev</button>
+          <button class="ticker-btn" id="tickerPlay">Pause</button>
+          <button class="ticker-btn" id="tickerNext">Next →</button>
+        </div>
+        <div class="ticker-dots" id="tickerDots"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-eyebrow reveal">Get in Touch</p>
+    <h2 class="section-title reveal">Let's Talk.</h2>
+    <div class="section-rule"></div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <h3>Ready to<br><span>connect?</span></h3>
+        <p>I'm open to new opportunities — particularly in operations, sales, and brand-side roles in the running, outdoor, or retail space. I'd love to hear from you.</p>
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <span class="contact-info-label">Email</span>
+            <a href="mailto:jsantes@live.com" class="contact-info-val">jsantes@live.com</a>
+          </div>
+          <div class="contact-info-item">
+            <span class="contact-info-label">Location</span>
+            <span class="contact-info-val">North Smithfield, RI</span>
+          </div>
+          <div class="contact-info-item">
+            <span class="contact-info-label">LinkedIn</span>
+            <a href="https://www.linkedin.com/in/joe-santes/" target="_blank" class="contact-info-val">linkedin.com/in/joe-santes</a>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form reveal" action="https://formspree.io/f/xjglyyyr" method="POST">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Jane Smith" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="jane@company.com" />
+        </div>
+        <div class="form-group">
+          <label for="company">Company / Role</label>
+          <input type="text" id="company" name="company" placeholder="New Balance, Inc." />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me about the role or what you're looking for..."></textarea>
+        </div>
+        <button class="form-submit" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-name">Joe Santes</div>
+    <div class="footer-copy">© 2026 Joe Santes. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#brands">Brands</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Scroll reveal ── */
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    window.addEventListener('scroll', () => {
+      document.querySelector('nav').style.padding =
+        window.scrollY > 60 ? '0.9rem 4rem' : '1.4rem 4rem';
+    });
+
+    /* ── Ticker ── */
+    const projects = [
+      "77 Rowe Street — Newton MA","Anthropologie — Hingham MA","Antonios Pizza — Providence",
+      "Brooks Brothers — Lee MA","Charlies — Lynn MA","Ethan Allen — Cranston","Ethan Allen — Hyannis",
+      "Fatface — Newport","Finagle Bagel HQ","Residence Inn & Springhill Suites — Fishkill NY",
+      "Travelers Fitout — Warwick RI","VS Cape Cod Mall","Walgreen — Belmont Street Worcester",
+      "ZARA — Providence Place Mall","Universal Wilde — Westwood MA","31 St James — WeWork Boston",
+      "Aldi — Cranston","First Bristol Office","H&M — Providence RI","Hampton Inn & Suites — Foxboro MA",
+      "LL Bean — Mashpee MA","Medway Church","Park Holm — Newport RI","Planet Fitness — Woonsocket RI",
+      "Starbucks — Springfield MA","Vineyard Vines — Westfarms Mall CT","VS Mall of NH",
+      "VS Rebrand Store — Northshore Mall","VS Trumbull CT","Z Gallerie — Cranston",
+      "171 Service Ave — BAYADA Suite 101","AT&T — Boston MA","Chicos — Cranston",
+      "Flash Global — Warwick","Suitsupply — Newbury Street Boston MA","Chipotle — Providence",
+      "Bath & Body Works","Boston Interior","ULTA — Hingham","Suite 101 — Warwick RI",
+      "Suite 102 — Warwick RI","Landfall — Brookline MA","Target — Newington CT","Target — Lincoln RI",
+      "Citrin — Braintree","Crunch Fitness — Fall River","Eblens — Dartmouth MA",
+      "Dollar Tree — Willimantic","Eblens Exterior — Dorchester","Filson — Boston",
+      "Landfall — East Boston","Residence Inn — Stamford CT","The Price Center — Newton",
+      "Wells Fargo — Providence","8 NB 5th Floor","Aspen Dental — Chelmsford MA",
+      "YNNH WH Geriatric Psych Reno","Dr. Eric George Office",
+      "Eblens — Lawrence & Lowell MA","Goldman Commons","Hampton Inn — Auburn MA",
+      "Hampton Inn — Buzzards Bay","HGI — Warwick","Hope Artiste — Pawtucket RI",
+      "Jonquils Cafe — Boston","My Salon Suite","Nylo Hotel — Warwick RI",
+      "Planet Fitness — East Providence","Quidnesset Country Club","Sidney Cafe — Cranston",
+      "Target — Seekonk","Whirlpool — Fall River","Wrentham Outlets","Yardhouse",
+      "37 Coolidge Street","Morgan Stanley — CT","Dr. George — RI","Aspen Dental","Planet Fitness",
+      "Lawson Green Apartments","Residence Inn — Lincoln RI","Hudson MA","Boston College Archives",
+      "Diegos Restaurant — Providence","State Farm","Ferranti Residence — Lincoln RI",
+      "Peabody Terrace — Brookline MA","Starbucks — Seekonk","Kendall East — Boston MA",
+      "80 Central Street","Cresco — Fall River","Sweetgreen — KenSquare","Cava — Smithfield",
+      "Life Alive — Dedham","Union Twist — Framingham MA","Level 99 — Natick MA",
+      "Level 99 — Providence Place","Medtronic MA","Spicy MA","Lafayette Street MA",
+      "Beacon Mutual — Warwick RI","Aloft Providence","Warby Parker — Yale CT","Ascent MA",
+      "Bryant University RI","Delaney at The Vale — Woburn MA","Thayer Academy — Braintree MA",
+      "Life Alive — Davis","Supply NE — Warwick RI","Tesla — Boston","Kovalev Insurance",
+      "Bud & Mary — Stoughton MA","Five Iron Golf — Boston MA","Rosa Mexicana — MA",
+      "150 California Street — Newton MA","Showcase Cinema — Warwick","Oasis at Plymouth",
+      "North Smithfield Track and Field House","LL Bean — Mashpee","LL Bean MA",
+      "North Kingstown Home","Rosa Seaport","Gentex MA","Solar MA","Dana Hall School",
+      "31 Cross Street — NK RI","Wakefield Sport — RI","Cava Restaurant","Gentex — Norwood MA",
+      "Middleboro MA","Summerville School of Music","42 Thornton Way RI",
+      "Akira — Providence Place Mall","West House — Newport RI","HubSpot ICL Imaging",
+      "Chapel View Apartment RI","Westerly Museum RI","Regency Park Condos — Brookline MA",
+      "Milton Cat — Stoughton MA","Uniqlo — Providence","Yardhouse","Sonic RI",
+      "Whole Foods — Hyannis MA","Ann Taylor — Natick MA","Brown Athletics","Marc Jacobs",
+      "Blakely Hall — Tufts University","Little Sprout MA","Bright Path — Westford MA",
+      "Clark Silva","Twin City Plaza — Boston","DoubleTree Hotel — Burlington VT",
+      "Alta Kelly Blvd — North Attleboro"
+    ];
+
+    const DURATION = 2750;
+    const stage = document.getElementById('tickerStage');
+    const progress = document.getElementById('tickerProgress');
+    const playBtn = document.getElementById('tickerPlay');
+    const prevBtn = document.getElementById('tickerPrev');
+    const nextBtn = document.getElementById('tickerNext');
+    const dotsWrap = document.getElementById('tickerDots');
+    const countEl = document.getElementById('tickerCount');
+
+    countEl.textContent = projects.length + ' projects';
+
+    projects.forEach((p, i) => {
+      const el = document.createElement('div');
+      el.className = 'ticker-item';
+      el.innerHTML = `<span class="ticker-project-name">${p}</span><span class="ticker-project-index">${i + 1} / ${projects.length}</span>`;
+      stage.appendChild(el);
+      const dot = document.createElement('div');
+      dot.className = 'ticker-dot';
+      dotsWrap.appendChild(dot);
+    });
+
+    const items = stage.querySelectorAll('.ticker-item');
+    const dots = dotsWrap.querySelectorAll('.ticker-dot');
+    let current = 0, isPlaying = true, interval = null;
+
+    function showItem(idx) {
+      const prev = stage.querySelector('.active');
+      if (prev) { prev.classList.remove('active'); prev.classList.add('exit'); setTimeout(() => prev.classList.remove('exit'), 500); }
+      items[idx].classList.add('active');
+      dots.forEach(d => d.classList.remove('current'));
+      dots[idx].classList.add('current');
+    }
+
+    function startProgress() {
+      progress.style.transition = 'none';
+      progress.style.width = '0%';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        progress.style.transition = `width ${DURATION}ms linear`;
+        progress.style.width = '100%';
+      }));
+    }
+
+    function startAuto() {
+      clearInterval(interval);
+      interval = setInterval(() => { current = (current + 1) % projects.length; showItem(current); startProgress(); }, DURATION);
+      startProgress();
+    }
+
+    function stopAuto() {
+      clearInterval(interval);
+      progress.style.transition = 'none';
+      progress.style.width = '0%';
+    }
+
+    showItem(0);
+    startAuto();
+
+    playBtn.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      playBtn.textContent = isPlaying ? 'Pause' : 'Play';
+      isPlaying ? startAuto() : stopAuto();
+    });
+
+    prevBtn.addEventListener('click', () => { current = (current - 1 + projects.length) % projects.length; showItem(current); if (isPlaying) startAuto(); });
+    nextBtn.addEventListener('click', () => { current = (current + 1) % projects.length; showItem(current); if (isPlaying) startAuto(); });
+  </script>
+
+</body>
+</html>
